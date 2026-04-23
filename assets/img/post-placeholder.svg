@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0e1f3a"/>
+  <rect x="20" y="20" width="1160" height="590" rx="3" fill="none" stroke="rgba(201,168,76,0.28)" stroke-width="1.5" stroke-dasharray="12 6"/>
+  <rect x="540" y="255" width="120" height="90" rx="4" fill="none" stroke="rgba(201,168,76,0.38)" stroke-width="1.5"/>
+  <circle cx="568" cy="281" r="10" fill="rgba(201,168,76,0.3)"/>
+  <polyline points="540,325 568,298 595,318 622,288 660,325" fill="none" stroke="rgba(201,168,76,0.38)" stroke-width="1.5"/>
+  <text x="600" y="395" fill="rgba(201,168,76,0.6)" font-family="Arial, sans-serif" font-size="13" text-anchor="middle" letter-spacing="3" font-weight="700">REPLACE WITH YOUR COVER IMAGE</text>
+  <text x="600" y="418" fill="rgba(122,132,153,0.55)" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" letter-spacing="1">1200 × 630 px recommended (also used for social sharing)</text>
+</svg>

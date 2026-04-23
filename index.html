@@ -14,8 +14,9 @@
 <body>
 
 <!-- NAV -->
+<div id="scroll-progress"></div>
 <nav>
-  <span class="nav-logo">Adrián J.</span>
+  <a href="/" class="nav-logo">Adrián J.</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
@@ -23,29 +24,48 @@
     <li><a href="#blog">Blog</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="btn btn-primary" style="padding:0.55rem 1.2rem; font-size:0.72rem;">Get in touch</a>
+  <div class="nav-right">
+    <a href="#contact" class="btn btn-primary nav-cta" style="padding:0.55rem 1.2rem; font-size:0.72rem;">Get in touch</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+<ul class="nav-mobile-panel" id="nav-mobile-panel">
+  <li><a href="#about">About</a></li>
+  <li><a href="#services">Services</a></li>
+  <li><a href="#projects">Projects</a></li>
+  <li><a href="#blog">Blog</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#contact" class="btn btn-primary">Get in touch</a></li>
+</ul>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg-line"></div>
   <div class="hero-bg-circle"></div>
 
-  <div class="hero-label label fade-in">Game Developer & Producer</div>
-  <h1 class="hero-title fade-in" style="transition-delay:0.1s">Adrián J.<br><em>Building worlds.</em><br>Growing teams.</h1>
-  <p class="hero-subtitle fade-in" style="transition-delay:0.2s">Producer · Designer · Programmer</p>
+  <div class="hero-content">
+    <div class="hero-label label fade-in">Game Developer & Producer</div>
+    <h1 class="hero-title fade-in" style="transition-delay:0.1s">Adrián J.<br><em>Building worlds.</em><br>Growing teams.</h1>
+    <p class="hero-subtitle fade-in" style="transition-delay:0.2s">Producer · Designer · Programmer</p>
 
-  <div class="hero-roles fade-in" style="transition-delay:0.3s">
-    <span class="role-tag">Game Production</span>
-    <span class="role-tag">Game Design</span>
-    <span class="role-tag">Programming</span>
-    <span class="role-tag">Team Audits</span>
-    <span class="role-tag">Mentorship</span>
+    <div class="hero-roles fade-in" style="transition-delay:0.3s">
+      <span class="role-tag">Game Production</span>
+      <span class="role-tag">Game Design</span>
+      <span class="role-tag">Programming</span>
+      <span class="role-tag">Team Audits</span>
+      <span class="role-tag">Mentorship</span>
+    </div>
+
+    <div class="hero-ctas fade-in" style="transition-delay:0.4s">
+      <a href="#services" class="btn btn-primary">Explore services</a>
+      <a href="#projects" class="btn btn-ghost">See my work</a>
+    </div>
   </div>
 
-  <div class="hero-ctas fade-in" style="transition-delay:0.4s">
-    <a href="#services" class="btn btn-primary">Explore services</a>
-    <a href="#projects" class="btn btn-ghost">See my work</a>
+  <div class="hero-photo fade-in" style="transition-delay:0.5s">
+    <img src="/assets/img/hero-photo.jpg" alt="Adrián J." class="hero-photo-img" />
   </div>
 
   <div class="hero-scroll">
@@ -64,6 +84,9 @@
 
   <div class="about-grid">
     <div class="about-text fade-in">
+      <div class="about-headshot">
+        <img src="/assets/img/headshot.jpg" alt="Adrián J." />
+      </div>
       <p>I'm a game developer and producer based near <strong>Barcelona</strong>, with a background that spans production, design, programming, and team communication. I work best at the intersection of disciplines — translating vision into execution.</p>
       <p>I co-founded <strong>Project Legends</strong>, the studio behind <em>Soccer Legends</em>, a mobile soccer RPG with gacha mechanics, where I led fundraising and cross-functional team coordination from the ground up.</p>
       <p>More recently I served as a <strong>startup mentor in Riyadh</strong> for the Saudi Game Champions program (GameBCN), coaching early-stage game studios through production pipelines, game design fundamentals, and team development — from first prototype to launch.</p>
@@ -183,7 +206,7 @@
 
     <div class="project-card fade-in" data-category="production design">
       <div class="project-thumb">
-        ⚽
+        <img src="/assets/img/project-soccer-legends.png" alt="Soccer Legends" style="width:100%;height:100%;object-fit:cover;display:block;" />
         <div class="project-thumb-overlay"></div>
       </div>
       <div class="project-body">
@@ -199,7 +222,10 @@
     </div>
 
     <div class="project-card fade-in" data-category="code design" style="transition-delay:0.1s">
-      <div class="project-thumb" style="font-size:2.5rem">🤖</div>
+      <div class="project-thumb">
+        <img src="/assets/img/project-robo.svg" alt="Robo Project" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div class="project-thumb-overlay"></div>
+      </div>
       <div class="project-body">
         <div class="project-tags">
           <span class="tag">Prototype</span>
@@ -333,6 +359,42 @@
 </footer>
 
 <script>
+  // ─── SCROLL PROGRESS ───
+  const progressBar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', () => {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    if (total > 0) progressBar.style.width = (window.scrollY / total * 100) + '%';
+  }, { passive: true });
+
+  // ─── HAMBURGER ───
+  const hamburger = document.getElementById('nav-hamburger');
+  const mobilePanel = document.getElementById('nav-mobile-panel');
+  hamburger.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    mobilePanel.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  mobilePanel.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobilePanel.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // ─── ACTIVE NAV ───
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const activeObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { rootMargin: '-30% 0px -70% 0px' });
+  sections.forEach(s => activeObserver.observe(s));
+
   // ─── BLOG TAG FILTER ───
   const blogFilterBtns = document.querySelectorAll('.blog-filter .filter-btn');
   const postCards = document.querySelectorAll('#blog-grid .post-card');

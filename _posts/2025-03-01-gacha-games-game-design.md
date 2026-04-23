@@ -4,6 +4,7 @@ title: "What gacha games taught me about game design fundamentals"
 date: 2025-03-01
 excerpt: "Building Soccer Legends with gacha mechanics forced me to think deeply about motivation loops, player psychology, and ethical monetisation. My honest take."
 linkedin_url: "https://www.linkedin.com/posts/adrian-jaime-pastor_so-this-is-a-devlog-about-robots-1-activity-7418318386146787328-veBC?utm_source=share&utm_medium=member_desktop&rcm=ACoAACBlF90BXV1mwJJiiX-wF2phnJuiXNNRpZc"
+cover_image: /assets/img/post-placeholder.svg
 tags: [game-design, monetisation, mobile]
 ---
 

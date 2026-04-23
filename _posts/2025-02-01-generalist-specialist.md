@@ -4,6 +4,7 @@ title: "On being a generalist in an industry that rewards specialists"
 date: 2025-02-01
 excerpt: "Producer. Designer. Programmer. Communicator. Being good at many things is an underrated superpower — but only if you know how to frame it."
 linkedin_url: "https://www.linkedin.com/posts/adrian-jaime-pastor_so-this-is-a-devlog-about-robots-1-activity-7418318386146787328-veBC?utm_source=share&utm_medium=member_desktop&rcm=ACoAACBlF90BXV1mwJJiiX-wF2phnJuiXNNRpZc"
+cover_image: /assets/img/post-placeholder.svg
 tags: [career, production, game-design]
 ---
 
