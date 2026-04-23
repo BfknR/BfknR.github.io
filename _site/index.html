@@ -222,30 +222,91 @@
   </div>
   <p class="fade-in" style="color:var(--muted); font-size:0.9rem; margin-bottom:2rem; margin-top:-2rem;">Originally published on LinkedIn — readable here.</p>
 
-  <div class="blog-grid">
+  
+  
+  
+
+  
+  <div class="blog-filter fade-in">
+    <button class="filter-btn active" data-tag="all">All</button>
     
-    <a href="/blog/2025/04/01/why-i-left-riyadh/" class="post-card fade-in">
-      <div class="post-date">April 2025</div>
-      <h3>Why I left a comfortable role in Riyadh to build what's next</h3>
-      <p class="post-excerpt">After 1.5 years mentoring game startups across Saudi Arabia, I made the call to come back. Here's what I learned — and what I'm building toward.</p>
-      <span class="post-read-more">Read more →</span>
+    <button class="filter-btn" data-tag="career">career</button>
+    
+    <button class="filter-btn" data-tag="game-design">game-design</button>
+    
+    <button class="filter-btn" data-tag="mentorship">mentorship</button>
+    
+    <button class="filter-btn" data-tag="mobile">mobile</button>
+    
+    <button class="filter-btn" data-tag="monetisation">monetisation</button>
+    
+    <button class="filter-btn" data-tag="production">production</button>
+    
+  </div>
+  
+
+  <div class="blog-grid" id="blog-grid">
+    
+    
+    <a href="/blog/2025/04/01/why-i-left-riyadh/" class="post-card fade-in" data-tags="career production mentorship">
+      
+      <div class="post-card-body">
+        <div class="post-meta">
+          <span class="post-date">April 2025</span>
+          <span class="post-read-time">1 min read</span>
+        </div>
+        <h3>Why I left a comfortable role in Riyadh to build what's next</h3>
+        <p class="post-excerpt">After 1.5 years mentoring game startups across Saudi Arabia, I made the call to come back. Here's what I learned — and what I'm building toward.</p>
+        
+        <div class="post-tags">
+          <span class="post-tag">career</span><span class="post-tag">production</span><span class="post-tag">mentorship</span>
+        </div>
+        
+        <span class="post-read-more">Read more →</span>
+      </div>
     </a>
     
-    <a href="/blog/2025/03/01/gacha-games-game-design/" class="post-card fade-in">
-      <div class="post-date">March 2025</div>
-      <h3>What gacha games taught me about game design fundamentals</h3>
-      <p class="post-excerpt">Building Soccer Legends with gacha mechanics forced me to think deeply about motivation loops, player psychology, and ethical monetisation. My honest take.</p>
-      <span class="post-read-more">Read more →</span>
+    
+    <a href="/blog/2025/03/01/gacha-games-game-design/" class="post-card fade-in" data-tags="game-design monetisation mobile">
+      
+      <div class="post-card-body">
+        <div class="post-meta">
+          <span class="post-date">March 2025</span>
+          <span class="post-read-time">1 min read</span>
+        </div>
+        <h3>What gacha games taught me about game design fundamentals</h3>
+        <p class="post-excerpt">Building Soccer Legends with gacha mechanics forced me to think deeply about motivation loops, player psychology, and ethical monetisation. My honest take.</p>
+        
+        <div class="post-tags">
+          <span class="post-tag">game-design</span><span class="post-tag">monetisation</span><span class="post-tag">mobile</span>
+        </div>
+        
+        <span class="post-read-more">Read more →</span>
+      </div>
     </a>
     
-    <a href="/blog/2025/02/01/generalist-specialist/" class="post-card fade-in">
-      <div class="post-date">February 2025</div>
-      <h3>On being a generalist in an industry that rewards specialists</h3>
-      <p class="post-excerpt">Producer. Designer. Programmer. Communicator. Being good at many things is an underrated superpower — but only if you know how to frame it.</p>
-      <span class="post-read-more">Read more →</span>
+    
+    <a href="/blog/2025/02/01/generalist-specialist/" class="post-card fade-in" data-tags="career production game-design">
+      
+      <div class="post-card-body">
+        <div class="post-meta">
+          <span class="post-date">February 2025</span>
+          <span class="post-read-time">1 min read</span>
+        </div>
+        <h3>On being a generalist in an industry that rewards specialists</h3>
+        <p class="post-excerpt">Producer. Designer. Programmer. Communicator. Being good at many things is an underrated superpower — but only if you know how to frame it.</p>
+        
+        <div class="post-tags">
+          <span class="post-tag">career</span><span class="post-tag">production</span><span class="post-tag">game-design</span>
+        </div>
+        
+        <span class="post-read-more">Read more →</span>
+      </div>
     </a>
     
   </div>
+
+  
 </section>
 
 <!-- CONTACT -->
@@ -306,6 +367,22 @@
 </footer>
 
 <script>
+  // ─── BLOG TAG FILTER ───
+  const blogFilterBtns = document.querySelectorAll('.blog-filter .filter-btn');
+  const postCards = document.querySelectorAll('#blog-grid .post-card');
+
+  blogFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      blogFilterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tag = btn.dataset.tag;
+      postCards.forEach(card => {
+        const tags = (card.dataset.tags || '').split(' ');
+        card.style.display = (tag === 'all' || tags.includes(tag)) ? '' : 'none';
+      });
+    });
+  });
+
   // ─── PROJECT FILTER ───
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');

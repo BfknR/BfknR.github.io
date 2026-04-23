@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Adrián J.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Adrián J.</a>
+  <ul class="nav-links">
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#services">Services</a></li>
+    <li><a href="/#projects">Projects</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="/#contact" class="btn btn-primary" style="padding:0.55rem 1.2rem; font-size:0.72rem;">Get in touch</a>
+</nav>
+
+<div class="blog-index">
+
+  <div class="blog-index-header fade-in">
+    <span class="label">Blog</span>
+    <h1>All posts</h1>
+    <p>3 posts — originally published on LinkedIn.</p>
+  </div>
+
+  
+  
+  
+
+  
+  <div class="blog-filter fade-in">
+    <button class="filter-btn active" data-tag="all">All</button>
+    
+    <button class="filter-btn" data-tag="career">career</button>
+    
+    <button class="filter-btn" data-tag="game-design">game-design</button>
+    
+    <button class="filter-btn" data-tag="mentorship">mentorship</button>
+    
+    <button class="filter-btn" data-tag="mobile">mobile</button>
+    
+    <button class="filter-btn" data-tag="monetisation">monetisation</button>
+    
+    <button class="filter-btn" data-tag="production">production</button>
+    
+  </div>
+  
+
+  <div class="blog-grid">
+    
+    
+    <a href="/blog/2025/04/01/why-i-left-riyadh/" class="post-card fade-in" data-tags="career production mentorship">
+      
+      <div class="post-card-body">
+        <div class="post-meta">
+          <span class="post-date">April 2025</span>
+          <span class="post-read-time">1 min read</span>
+        </div>
+        <h3>Why I left a comfortable role in Riyadh to build what's next</h3>
+        <p class="post-excerpt">After 1.5 years mentoring game startups across Saudi Arabia, I made the call to come back. Here's what I learned — and what I'm building toward.</p>
+        
+        <div class="post-tags">
+          <span class="post-tag">career</span><span class="post-tag">production</span><span class="post-tag">mentorship</span>
+        </div>
+        
+        <span class="post-read-more">Read more →</span>
+      </div>
+    </a>
+    
+    
+    <a href="/blog/2025/03/01/gacha-games-game-design/" class="post-card fade-in" data-tags="game-design monetisation mobile">
+      
+      <div class="post-card-body">
+        <div class="post-meta">
+          <span class="post-date">March 2025</span>
+          <span class="post-read-time">1 min read</span>
+        </div>
+        <h3>What gacha games taught me about game design fundamentals</h3>
+        <p class="post-excerpt">Building Soccer Legends with gacha mechanics forced me to think deeply about motivation loops, player psychology, and ethical monetisation. My honest take.</p>
+        
+        <div class="post-tags">
+          <span class="post-tag">game-design</span><span class="post-tag">monetisation</span><span class="post-tag">mobile</span>
+        </div>
+        
+        <span class="post-read-more">Read more →</span>
+      </div>
+    </a>
+    
+    
+    <a href="/blog/2025/02/01/generalist-specialist/" class="post-card fade-in" data-tags="career production game-design">
+      
+      <div class="post-card-body">
+        <div class="post-meta">
+          <span class="post-date">February 2025</span>
+          <span class="post-read-time">1 min read</span>
+        </div>
+        <h3>On being a generalist in an industry that rewards specialists</h3>
+        <p class="post-excerpt">Producer. Designer. Programmer. Communicator. Being good at many things is an underrated superpower — but only if you know how to frame it.</p>
+        
+        <div class="post-tags">
+          <span class="post-tag">career</span><span class="post-tag">production</span><span class="post-tag">game-design</span>
+        </div>
+        
+        <span class="post-read-more">Read more →</span>
+      </div>
+    </a>
+    
+  </div>
+
+  <div class="blog-index-footer">
+    3 posts total
+  </div>
+
+</div>
+
+<script>
+  const filterBtns = document.querySelectorAll('.blog-filter .filter-btn');
+  const postCards = document.querySelectorAll('.blog-grid .post-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tag = btn.dataset.tag;
+      postCards.forEach(card => {
+        const tags = (card.dataset.tags || '').split(' ');
+        card.style.display = (tag === 'all' || tags.includes(tag)) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+
+<footer>
+  <a href="/" class="footer-logo">Adrián J.</a>
+  <span class="footer-copy">© 2025 AJProductions. Based near Barcelona.</span>
+  <a href="https://www.linkedin.com/in/adrian-jaime-pastor/" target="_blank" class="btn btn-ghost" style="padding:0.45rem 1rem; font-size:0.7rem;">LinkedIn ↗</a>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

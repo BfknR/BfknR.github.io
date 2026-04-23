@@ -8,6 +8,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{ page.title | escape }}" />
+  <meta property="og:description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 160 | escape }}" />
+  <meta property="og:url" content="{{ page.url | absolute_url }}" />
+  {% if page.cover_image %}<meta property="og:image" content="{{ page.cover_image | absolute_url }}" />{% endif %}
+  <meta name="twitter:card" content="{% if page.cover_image %}summary_large_image{% else %}summary{% endif %}" />
 </head>
 <body>
 
@@ -17,7 +24,7 @@
     <li><a href="/#about">About</a></li>
     <li><a href="/#services">Services</a></li>
     <li><a href="/#projects">Projects</a></li>
-    <li><a href="/#blog">Blog</a></li>
+    <li><a href="/blog/">Blog</a></li>
     <li><a href="/#contact">Contact</a></li>
   </ul>
   <a href="/#contact" class="btn btn-primary" style="padding:0.55rem 1.2rem; font-size:0.72rem;">Get in touch</a>
@@ -25,15 +32,65 @@
 
 <main class="post-page">
   <div class="post-article fade-in">
-    <a href="/#blog" class="post-back">← All posts</a>
-    <div class="post-article-date">{{ page.date | date: "%B %Y" }}</div>
-    <h1 class="post-article-title">{{ page.title }}</h1>
-    <div class="post-article-body">
-      {{ content }}
+    <a href="/blog/" class="post-back">← All posts</a>
+
+    {% if page.cover_image %}
+    <img src="{{ page.cover_image | relative_url }}" alt="{{ page.title }}" class="post-cover-img" />
+    {% endif %}
+
+    {% assign reading_time = content | strip_html | number_of_words | plus: 199 | divided_by: 200 %}
+    <div class="post-article-meta">
+      <div class="post-article-date">{{ page.date | date: "%B %-d, %Y" }}</div>
+      <span class="post-article-read-time">{{ reading_time }} min read</span>
     </div>
+
+    <h1 class="post-article-title">{{ page.title }}</h1>
+
+    {% if page.tags.size > 0 %}
+    <div class="post-article-tags">
+      {% for tag in page.tags %}<span class="post-article-tag">{{ tag }}</span>{% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="post-article-body">{{ content }}</div>
+
     {% if page.linkedin_url %}
     <a href="{{ page.linkedin_url }}" target="_blank" rel="noopener" class="post-li-link">Read on LinkedIn ↗</a>
     {% endif %}
+
+    <!-- Related posts -->
+    {% assign related_posts = "" | split: "" %}
+    {% for p in site.posts %}
+      {% if p.url != page.url %}
+        {% if page.tags.size > 0 %}
+          {% assign has_common = false %}
+          {% for tag in p.tags %}
+            {% if page.tags contains tag %}
+              {% assign has_common = true %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          {% if has_common %}{% assign related_posts = related_posts | push: p %}{% endif %}
+        {% else %}
+          {% assign related_posts = related_posts | push: p %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if related_posts.size > 0 %}
+    <div class="related-posts">
+      <span class="label">Related</span>
+      <div class="related-posts-grid">
+        {% for rpost in related_posts limit:3 %}
+        <a href="{{ rpost.url | relative_url }}" class="related-post-card">
+          <div class="related-post-date">{{ rpost.date | date: "%B %Y" }}</div>
+          <h4>{{ rpost.title }}</h4>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
   </div>
 </main>
 

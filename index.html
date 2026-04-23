@@ -224,16 +224,55 @@
   </div>
   <p class="fade-in" style="color:var(--muted); font-size:0.9rem; margin-bottom:2rem; margin-top:-2rem;">Originally published on LinkedIn — readable here.</p>
 
-  <div class="blog-grid">
+  {% assign all_tags = "" | split: "" %}
+  {% for post in site.posts %}
+    {% for tag in post.tags %}
+      {% unless all_tags contains tag %}
+        {% assign all_tags = all_tags | push: tag %}
+      {% endunless %}
+    {% endfor %}
+  {% endfor %}
+  {% assign all_tags = all_tags | sort %}
+
+  {% if all_tags.size > 0 %}
+  <div class="blog-filter fade-in">
+    <button class="filter-btn active" data-tag="all">All</button>
+    {% for tag in all_tags %}
+    <button class="filter-btn" data-tag="{{ tag }}">{{ tag }}</button>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="blog-grid" id="blog-grid">
     {% for post in site.posts limit:6 %}
-    <a href="{{ post.url | relative_url }}" class="post-card fade-in">
-      <div class="post-date">{{ post.date | date: "%B %Y" }}</div>
-      <h3>{{ post.title }}</h3>
-      <p class="post-excerpt">{{ post.excerpt | strip_html }}</p>
-      <span class="post-read-more">Read more →</span>
+    {% assign reading_time = post.content | strip_html | number_of_words | plus: 199 | divided_by: 200 %}
+    <a href="{{ post.url | relative_url }}" class="post-card fade-in" data-tags="{{ post.tags | join: ' ' }}">
+      {% if post.cover_image %}
+      <div class="post-card-thumb" style="background-image:url('{{ post.cover_image | relative_url }}')"></div>
+      {% endif %}
+      <div class="post-card-body">
+        <div class="post-meta">
+          <span class="post-date">{{ post.date | date: "%B %Y" }}</span>
+          <span class="post-read-time">{{ reading_time }} min read</span>
+        </div>
+        <h3>{{ post.title }}</h3>
+        <p class="post-excerpt">{{ post.excerpt | strip_html }}</p>
+        {% if post.tags.size > 0 %}
+        <div class="post-tags">
+          {% for tag in post.tags %}<span class="post-tag">{{ tag }}</span>{% endfor %}
+        </div>
+        {% endif %}
+        <span class="post-read-more">Read more →</span>
+      </div>
     </a>
     {% endfor %}
   </div>
+
+  {% if site.posts.size > 6 %}
+  <div class="blog-view-all fade-in">
+    <a href="/blog/" class="btn btn-ghost">View all {{ site.posts.size }} posts →</a>
+  </div>
+  {% endif %}
 </section>
 
 <!-- CONTACT -->
@@ -294,6 +333,22 @@
 </footer>
 
 <script>
+  // ─── BLOG TAG FILTER ───
+  const blogFilterBtns = document.querySelectorAll('.blog-filter .filter-btn');
+  const postCards = document.querySelectorAll('#blog-grid .post-card');
+
+  blogFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      blogFilterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tag = btn.dataset.tag;
+      postCards.forEach(card => {
+        const tags = (card.dataset.tags || '').split(' ');
+        card.style.display = (tag === 'all' || tags.includes(tag)) ? '' : 'none';
+      });
+    });
+  });
+
   // ─── PROJECT FILTER ───
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');

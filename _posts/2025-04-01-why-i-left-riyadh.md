@@ -4,6 +4,7 @@ title: "Why I left a comfortable role in Riyadh to build what's next"
 date: 2025-04-01
 excerpt: "After 1.5 years mentoring game startups across Saudi Arabia, I made the call to come back. Here's what I learned — and what I'm building toward."
 linkedin_url: "https://www.linkedin.com/posts/adrian-jaime-pastor_so-this-is-a-devlog-about-robots-1-activity-7418318386146787328-veBC?utm_source=share&utm_medium=member_desktop&rcm=ACoAACBlF90BXV1mwJJiiX-wF2phnJuiXNNRpZc"
+tags: [career, production, mentorship]
 ---
 
 After 1.5 years mentoring game development startups in Riyadh as part of the Saudi Game Champions program, I made the call to come back to Barcelona. It wasn't easy.
