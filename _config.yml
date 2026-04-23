@@ -1,0 +1,14 @@
+title: "Adrián J. — Game Developer & Producer"
+description: "Game Developer & Producer based near Barcelona."
+url: "https://bfknr.github.io"
+
+permalink: /blog/:year/:month/:day/:title/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

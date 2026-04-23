@@ -1,5 +1,3 @@
----
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
 </head>
 <body>
 
@@ -225,14 +223,28 @@
   <p class="fade-in" style="color:var(--muted); font-size:0.9rem; margin-bottom:2rem; margin-top:-2rem;">Originally published on LinkedIn — readable here.</p>
 
   <div class="blog-grid">
-    {% for post in site.posts limit:6 %}
-    <a href="{{ post.url | relative_url }}" class="post-card fade-in">
-      <div class="post-date">{{ post.date | date: "%B %Y" }}</div>
-      <h3>{{ post.title }}</h3>
-      <p class="post-excerpt">{{ post.excerpt | strip_html }}</p>
+    
+    <a href="/blog/2025/04/01/why-i-left-riyadh/" class="post-card fade-in">
+      <div class="post-date">April 2025</div>
+      <h3>Why I left a comfortable role in Riyadh to build what's next</h3>
+      <p class="post-excerpt">After 1.5 years mentoring game startups across Saudi Arabia, I made the call to come back. Here's what I learned — and what I'm building toward.</p>
       <span class="post-read-more">Read more →</span>
     </a>
-    {% endfor %}
+    
+    <a href="/blog/2025/03/01/gacha-games-game-design/" class="post-card fade-in">
+      <div class="post-date">March 2025</div>
+      <h3>What gacha games taught me about game design fundamentals</h3>
+      <p class="post-excerpt">Building Soccer Legends with gacha mechanics forced me to think deeply about motivation loops, player psychology, and ethical monetisation. My honest take.</p>
+      <span class="post-read-more">Read more →</span>
+    </a>
+    
+    <a href="/blog/2025/02/01/generalist-specialist/" class="post-card fade-in">
+      <div class="post-date">February 2025</div>
+      <h3>On being a generalist in an industry that rewards specialists</h3>
+      <p class="post-excerpt">Producer. Designer. Programmer. Communicator. Being good at many things is an underrated superpower — but only if you know how to frame it.</p>
+      <span class="post-read-more">Read more →</span>
+    </a>
+    
   </div>
 </section>
 
