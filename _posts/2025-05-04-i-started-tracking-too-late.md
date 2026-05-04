@@ -4,7 +4,7 @@ title: "I started tracking too late"
 date: 2025-05-04
 excerpt: "We had the game, we had the money, we had the people. And we forgot about the single most important thing. Costing us EVERYTHING."
 linkedin_url: "https://www.linkedin.com/posts/adrian-jaime-pastor_we-spent-3-years-building-a-game-nobody-wanted-share-7456990319687970816-B0qz?utm_source=share&utm_medium=member_desktop&rcm=ACoAACBlF90BXV1mwJJiiX-wF2phnJuiXNNRpZc"
-cover_image: /assets/img/project-soccer-legends.svg
+cover_image: /assets/img/project-soccer-legends.png
 tags: [analytics, production]
 ---
 
