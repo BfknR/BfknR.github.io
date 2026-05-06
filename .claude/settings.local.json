@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(jekyll --version)",
+      "Bash(ruby --version)",
+      "Bash(gem --version)",
+      "Bash(bundler --version)",
+      "Bash(rbenv version *)",
+      "Bash(brew list *)",
+      "Bash(gem install *)",
+      "Bash(brew --version)",
+      "Bash(brew install *)",
+      "Bash(export PATH=\"/opt/homebrew/opt/ruby/bin:$PATH\")",
+      "Bash(bundle install *)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(bundle exec *)"
+    ]
+  }
+}
