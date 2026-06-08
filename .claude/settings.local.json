@@ -14,8 +14,14 @@
       "Bash(bundle install *)",
       "mcp__Claude_Preview__preview_start",
       "Bash(bundle exec *)",
-      "Bash(rbenv versions *)",
-      "Bash(asdf list *)"
+      "Bash(git ls-tree *)",
+      "Bash(gh api *)",
+      "Bash(gh repo *)",
+      "Bash(file assets/img/companies/*.png)",
+      "Bash(xxd assets/img/companies/project-legends.png)",
+      "Bash(curl -s http://localhost:4000/)",
+      "Bash(rbenv exec *)",
+      "Bash(curl -s http://localhost:4000/assets/css/main.css)"
     ]
   }
 }

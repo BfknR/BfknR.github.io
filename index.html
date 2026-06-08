@@ -83,28 +83,20 @@
     <div class="companies-track">
       {% assign companies = site.companies | sort: 'order' %}
       {% for company in companies %}
-      <div class="company-item" tabindex="0" aria-label="{{ company.name }}">
+      <div class="company-item" tabindex="0" aria-label="{{ company.name }}"
+        data-name="{{ company.name }}"
+        data-role="{{ company.role }}{% if company.period %} · {{ company.period }}{% endif %}"
+        data-desc="{{ company.description }}">
         <div class="company-logo-wrap">
           {% if company.logo %}
           <img src="{{ company.logo }}" alt="{{ company.name }}" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
           {% endif %}
           <span class="company-name-fallback" style="display:{% if company.logo %}none{% else %}flex{% endif %}">{{ company.name }}</span>
         </div>
-        <div class="company-popup" role="tooltip">
-          <div class="company-popup-name">{{ company.name }}</div>
-          <div class="company-popup-role">{{ company.role }}{% if company.period %} · {{ company.period }}{% endif %}</div>
-          <p class="company-popup-desc">{{ company.description }}</p>
-        </div>
-      </div>
-      {% endfor %}
-      <!-- duplicate for seamless loop -->
-      {% for company in companies %}
-      <div class="company-item" aria-hidden="true">
-        <div class="company-logo-wrap">
-          {% if company.logo %}
-          <img src="{{ company.logo }}" alt="" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-          {% endif %}
-          <span class="company-name-fallback" style="display:{% if company.logo %}none{% else %}flex{% endif %}">{{ company.name }}</span>
+        <div class="company-card-info">
+          <div class="company-card-name">{{ company.name }}</div>
+          <div class="company-card-role">{{ company.role }}{% if company.period %} · {{ company.period }}{% endif %}</div>
+          <p class="company-card-desc">{{ company.description }}</p>
         </div>
       </div>
       {% endfor %}
@@ -384,6 +376,7 @@
   <a href="https://www.linkedin.com/in/adrian-jaime-pastor/" target="_blank" class="btn btn-ghost" style="padding:0.45rem 1rem; font-size:0.7rem;">LinkedIn ↗</a>
 </footer>
 
+
 <script>
   // ─── SCROLL PROGRESS ───
   const progressBar = document.getElementById('scroll-progress');
@@ -460,18 +453,100 @@
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // ─── COMPANY CAROUSEL — click to pin popup on touch devices ───
-  document.querySelectorAll('.company-item[tabindex]').forEach(item => {
-    item.addEventListener('click', e => {
-      const isOpen = item.classList.contains('popup-open');
-      document.querySelectorAll('.company-item').forEach(i => i.classList.remove('popup-open'));
-      if (!isOpen) item.classList.add('popup-open');
-      e.stopPropagation();
+
+  // ─── COMPANY CAROUSEL ───
+  (function () {
+    const wrap  = document.querySelector('.companies-carousel-wrap');
+    const track = document.querySelector('.companies-track');
+    if (!track) return;
+
+    const originalItems = [...track.children];
+
+    // Clone until track fills viewport × 2
+    while (track.scrollWidth < window.innerWidth * 2) {
+      originalItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.removeAttribute('tabindex');
+        track.appendChild(clone);
+      });
+    }
+
+    // True visual period = width of one original set including the trailing gap to the next
+    const gap = originalItems.length > 1
+      ? originalItems[1].offsetLeft - originalItems[0].offsetLeft - originalItems[0].offsetWidth
+      : 32;
+    const setWidth = originalItems[originalItems.length - 1].offsetLeft
+                   + originalItems[originalItems.length - 1].offsetWidth
+                   + gap;
+
+    const DURATION = 28; // seconds for one full cycle
+
+    // Inject keyframes with the exact measured setWidth so the animation loops perfectly
+    const kf = document.createElement('style');
+    kf.textContent = `@keyframes co-scroll { to { transform: translateX(${-setWidth}px); } }`;
+    document.head.appendChild(kf);
+
+    // Start CSS animation from position x (normalises x to the first visual period)
+    function playFrom(x) {
+      let nx = x % setWidth; // JS % preserves sign, so nx ∈ (-setWidth, 0] for x ≤ 0
+      if (nx > 0) nx -= setWidth;
+      const elapsed = (-nx / setWidth) * DURATION;
+      track.style.animation = `co-scroll ${DURATION}s linear -${elapsed}s infinite`;
+      // Remove inline transform one frame later so the animation takes over seamlessly
+      requestAnimationFrame(() => { track.style.transform = ''; });
+    }
+
+    playFrom(0);
+
+    let frozenX = 0; // last known position when animation was frozen
+
+    function freeze() {
+      const m = new DOMMatrix(getComputedStyle(track).transform);
+      frozenX = isNaN(m.m41) ? 0 : m.m41;
+      track.style.transform = `translateX(${frozenX}px)`;
+      track.style.animation = 'none';
+    }
+
+    function centerItem(item) {
+      const targetX = wrap.offsetWidth / 2 - item.offsetLeft - item.offsetWidth / 2;
+      track.style.transition = 'transform 0.5s ease';
+      track.style.transform  = `translateX(${targetX}px)`;
+      frozenX = targetX;
+      setTimeout(() => { track.style.transition = ''; }, 500);
+    }
+
+    function collapse() {
+      const active = track.querySelector('.company-item.active');
+      if (active) active.classList.remove('active');
+      // Wait for the card's collapse transition (0.45s) to finish before
+      // resuming the animation. Only once the card is fully 160px again are
+      // frozenX and (frozenX % setWidth) visually identical — preventing the
+      // visible jump that occurs when normalising mid-transition.
+      setTimeout(() => playFrom(frozenX), 460);
+    }
+
+    track.addEventListener('click', e => {
+      const item = e.target.closest('.company-item');
+      if (!item) return;
+
+      const isActive = item.classList.contains('active');
+      const prev = track.querySelector('.company-item.active');
+      if (prev) prev.classList.remove('active');
+
+      if (isActive) {
+        collapse();
+      } else {
+        freeze();
+        item.classList.add('active');
+        setTimeout(() => centerItem(item), 460);
+      }
     });
-  });
-  document.addEventListener('click', () => {
-    document.querySelectorAll('.company-item').forEach(i => i.classList.remove('popup-open'));
-  });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') collapse();
+    });
+  })();
 
   // ─── FORM SUBMIT ───
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mkokpdjq';
@@ -512,6 +587,7 @@
       }, 4000);
     }
   }
+
 </script>
 </body>
 </html>
