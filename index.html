@@ -74,6 +74,44 @@
   </div>
 </section>
 
+<!-- COMPANIES -->
+<section id="companies">
+  <div class="companies-label fade-in">
+    <span class="label">Companies & Collaborations</span>
+  </div>
+  <div class="companies-carousel-wrap">
+    <div class="companies-track">
+      {% assign companies = site.companies | sort: 'order' %}
+      {% for company in companies %}
+      <div class="company-item" tabindex="0" aria-label="{{ company.name }}">
+        <div class="company-logo-wrap">
+          {% if company.logo %}
+          <img src="{{ company.logo }}" alt="{{ company.name }}" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          {% endif %}
+          <span class="company-name-fallback" style="display:{% if company.logo %}none{% else %}flex{% endif %}">{{ company.name }}</span>
+        </div>
+        <div class="company-popup" role="tooltip">
+          <div class="company-popup-name">{{ company.name }}</div>
+          <div class="company-popup-role">{{ company.role }}{% if company.period %} · {{ company.period }}{% endif %}</div>
+          <p class="company-popup-desc">{{ company.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+      <!-- duplicate for seamless loop -->
+      {% for company in companies %}
+      <div class="company-item" aria-hidden="true">
+        <div class="company-logo-wrap">
+          {% if company.logo %}
+          <img src="{{ company.logo }}" alt="" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          {% endif %}
+          <span class="company-name-fallback" style="display:{% if company.logo %}none{% else %}flex{% endif %}">{{ company.name }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 <!-- ABOUT -->
 <section id="about">
   <div class="section-header fade-in">
@@ -421,6 +459,19 @@
   }, { threshold: 0.08 });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ─── COMPANY CAROUSEL — click to pin popup on touch devices ───
+  document.querySelectorAll('.company-item[tabindex]').forEach(item => {
+    item.addEventListener('click', e => {
+      const isOpen = item.classList.contains('popup-open');
+      document.querySelectorAll('.company-item').forEach(i => i.classList.remove('popup-open'));
+      if (!isOpen) item.classList.add('popup-open');
+      e.stopPropagation();
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.company-item').forEach(i => i.classList.remove('popup-open'));
+  });
 
   // ─── FORM SUBMIT ───
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mkokpdjq';

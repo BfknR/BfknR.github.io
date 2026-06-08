@@ -4,6 +4,11 @@ url: "https://bfknr.github.io"
 
 permalink: /blog/:year/:month/:day/:title/
 
+collections:
+  companies:
+    output: false
+    sort_by: order
+
 markdown: kramdown
 kramdown:
   input: GFM
