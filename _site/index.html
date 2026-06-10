@@ -778,12 +778,24 @@ Currently in the modeling and core-loop prototyping phase.
     }
   });
 
-  // ─── PROJECT VIDEO HOVER ───
+  // ─── PROJECT VIDEO HOVER / SCROLL-INTO-VIEW ───
+  const isTouchDevice = () => window.matchMedia('(hover: none)').matches;
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!isTouchDevice()) return;
+      const video = entry.target.querySelector('.project-thumb-video');
+      if (!video) return;
+      if (entry.isIntersecting) { video.play(); }
+      else { video.pause(); video.currentTime = 0; }
+    });
+  }, { threshold: 0.6 });
+
   projectCards.forEach(card => {
     const video = card.querySelector('.project-thumb-video');
     if (!video) return;
-    card.addEventListener('mouseenter', () => { video.play(); });
-    card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+    card.addEventListener('mouseenter', () => { if (!isTouchDevice()) video.play(); });
+    card.addEventListener('mouseleave', () => { if (!isTouchDevice()) { video.pause(); video.currentTime = 0; } });
+    videoObserver.observe(card);
   });
 
   // ─── PROJECT MODAL ───
