@@ -783,10 +783,17 @@ Currently in the modeling and core-loop prototyping phase.
   const videoObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!isTouchDevice()) return;
-      const video = entry.target.querySelector('.project-thumb-video');
+      const card  = entry.target;
+      const video = card.querySelector('.project-thumb-video');
       if (!video) return;
-      if (entry.isIntersecting) { video.play(); }
-      else { video.pause(); video.currentTime = 0; }
+      if (entry.isIntersecting) {
+        video.play();
+        card.classList.add('is-playing');
+      } else {
+        video.pause();
+        video.currentTime = 0;
+        card.classList.remove('is-playing');
+      }
     });
   }, { threshold: 0.6 });
 

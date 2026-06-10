@@ -634,8 +634,10 @@ section {
   opacity: 0;
   transition: opacity 0.35s;
 }
-.project-card.has-video:hover .project-thumb-video { opacity: 1; }
-.project-card.has-video:hover .project-thumb-img   { opacity: 0; }
+.project-card.has-video:hover .project-thumb-video,
+.project-card.has-video.is-playing .project-thumb-video { opacity: 1; }
+.project-card.has-video:hover .project-thumb-img,
+.project-card.has-video.is-playing .project-thumb-img   { opacity: 0; }
 
 /* ── project modal ── */
 .project-modal {
