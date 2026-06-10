@@ -1292,7 +1292,7 @@ footer {
 
 .companies-label {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.4rem;
 }
 
 .companies-carousel-wrap {
@@ -1352,6 +1352,14 @@ footer {
   align-items: center;
   justify-content: center;
   padding: 0.4rem;
+  position: relative;
+}
+
+.companies-hint {
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-top: 0.3rem;
 }
 
 .company-logo {
