@@ -40,12 +40,11 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg-line"></div>
   <div class="hero-bg-circle"></div>
 
   <div class="hero-content">
     <div class="hero-label label fade-in">Game Developer & Producer</div>
-    <h1 class="hero-title fade-in" style="transition-delay:0.1s">Adrián J.<br><em>Building worlds.</em><br>Growing teams.</h1>
+    <h1 class="hero-title fade-in" style="transition-delay:0.1s">Adrián J. P.<br><em>Building worlds.</em><br>Growing teams.</h1>
     <p class="hero-subtitle fade-in" style="transition-delay:0.2s">Producer · Designer · Programmer</p>
 
     <div class="hero-roles fade-in" style="transition-delay:0.3s">
@@ -59,6 +58,10 @@
     <div class="hero-ctas fade-in" style="transition-delay:0.4s">
       <a href="#services" class="btn btn-primary">Explore services</a>
       <a href="#projects" class="btn btn-ghost">See my work</a>
+      <a href="/assets/Adrián Jaime Pastor - Resume.pdf" download class="btn btn-ghost">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right:0.35rem"><path d="M6 1v7M3 5.5l3 3 3-3M1 10h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Download CV
+      </a>
     </div>
   </div>
 
@@ -183,6 +186,23 @@
         </div>
       </div>
       
+      <div class="company-item" tabindex="0" aria-label="Sige"
+        data-name="Sige"
+        data-role="Producer · 2023"
+        data-desc="Directed a team of five developers and contributed to both frontend and backend features of NRGauditor. Applied Agile workflows to deliver energy reporting tools efficiently.">
+        <div class="company-logo-wrap">
+          
+          <img src="/assets/img/companies/sige.svg" alt="Sige" class="company-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+          
+          <span class="company-name-fallback" style="display:none">Sige</span>
+        </div>
+        <div class="company-card-info">
+          <div class="company-card-name">Sige</div>
+          <div class="company-card-role">Producer · 2023</div>
+          <p class="company-card-desc">Directed a team of five developers and contributed to both frontend and backend features of NRGauditor. Applied Agile workflows to deliver energy reporting tools efficiently.</p>
+        </div>
+      </div>
+      
     </div>
   </div>
 </section>
@@ -296,51 +316,162 @@
     <div class="section-line"></div>
   </div>
 
+  
+  
+  
+
   <div class="projects-filter fade-in">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="production">Production</button>
-    <button class="filter-btn" data-filter="design">Design</button>
-    <button class="filter-btn" data-filter="code">Code</button>
+    <div class="tool-dropdown-wrap">
+      <button class="tool-dropdown-trigger" id="tool-dropdown-trigger" aria-expanded="false">
+        Filter by tool
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" class="tool-dropdown-arrow"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="tool-dropdown-list" id="tool-dropdown-list">
+        <input class="tool-dropdown-search" id="tool-dropdown-search" type="text" placeholder="Search tools…" autocomplete="off" />
+        
+        <button class="tool-dropdown-option" data-tool="Blender">Blender</button>
+        
+        <button class="tool-dropdown-option" data-tool="C#">C#</button>
+        
+        <button class="tool-dropdown-option" data-tool="Figma">Figma</button>
+        
+        <button class="tool-dropdown-option" data-tool="Jira">Jira</button>
+        
+        <button class="tool-dropdown-option" data-tool="Notion">Notion</button>
+        
+        <button class="tool-dropdown-option" data-tool="Playfab">Playfab</button>
+        
+        <button class="tool-dropdown-option" data-tool="Unity">Unity</button>
+        
+      </div>
+    </div>
+    <div class="tool-selected-tags" id="tool-selected-tags"></div>
   </div>
 
   <div class="projects-grid">
+    
+    
+    <div class="project-card fade-in has-video"
+      data-tools="Unity,C#,Jira,Figma,Notion,Playfab"
+      data-title="Soccer Legends"
+      data-status="launched"
+      data-summary="Mobile soccer RPG with gacha mechanics. Co-founded Project Legends, led production, fundraising, and cross-functional coordination from concept to launch."
+      data-description="Soccer Legends is a mobile soccer RPG built around gacha mechanics and a deep progression system. As co-founder and producer at Project Legends, I led the studio from concept through global launch.
 
-    <div class="project-card fade-in" data-category="production design">
+My role covered end-to-end production: defining the roadmap, coordinating a cross-functional team of designers, engineers, and artists, driving the fundraising process, and keeping creative vision aligned with delivery timelines.
+
+The game reached the App Store and Google Play, achieving thousands of downloads in its first weeks.
+"
+      data-tools-list="Unity|C#|Jira|Figma|Notion|Playfab"
+      data-tags-list="Mobile|RPG|Gacha"
+      data-links="[]"
+      data-start="2022"
+      data-end="2024"
+      style="transition-delay:0.0s">
       <div class="project-thumb">
-        <img src="/assets/img/project-soccer-legends.png" alt="Soccer Legends" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        
+        <img src="/assets/img/project-soccer-legends.png" alt="Soccer Legends" class="project-thumb-img" />
+        
+        
+        <video class="project-thumb-video" muted loop playsinline preload="none">
+          <source src="/assets/vid/soccer-legends.mp4" type="video/mp4" />
+        </video>
+        
         <div class="project-thumb-overlay"></div>
+        <span class="project-status-badge status-launched">
+          Launched
+            
+        </span>
       </div>
       <div class="project-body">
         <div class="project-tags">
+          
           <span class="tag">Mobile</span>
+          
           <span class="tag">RPG</span>
+          
           <span class="tag">Gacha</span>
+          
         </div>
         <h3>Soccer Legends</h3>
+        <span class="project-date">2022 – 2024</span>
         <p>Mobile soccer RPG with gacha mechanics. Co-founded Project Legends, led production, fundraising, and cross-functional coordination from concept to launch.</p>
         <span class="project-link">View project →</span>
       </div>
     </div>
+    
+    <div class="project-card fade-in"
+      data-tools="Blender,Unity,C#"
+      data-title="Robo Project"
+      data-status="in-progress"
+      data-summary="A low-poly game prototype featuring piece-swapping modular robots. Currently in active development."
+      data-description="Robo Project is a personal game prototype exploring modular robot design as a core mechanic. Players collect, swap, and combine robot parts to build unique machines suited to different challenges.
 
-    <div class="project-card fade-in" data-category="code design" style="transition-delay:0.1s">
+The art direction uses a deliberate low-poly aesthetic with clean silhouettes to make each part instantly readable. Modeling is done in Blender; gameplay logic in Unity with C#.
+
+Currently in the modeling and core-loop prototyping phase.
+"
+      data-tools-list="Blender|Unity|C#"
+      data-tags-list="Prototype|PC|Action"
+      data-links="[]"
+      data-start="2024"
+      data-end=""
+      style="transition-delay:0.1s">
       <div class="project-thumb">
-        <img src="/assets/img/project-robo.svg" alt="Robo Project" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        
+        <img src="/assets/img/project-robo.svg" alt="Robo Project" class="project-thumb-img" />
+        
+        
         <div class="project-thumb-overlay"></div>
+        <span class="project-status-badge status-in-progress">
+          In Progress
+            
+        </span>
       </div>
       <div class="project-body">
         <div class="project-tags">
+          
           <span class="tag">Prototype</span>
-          <span class="tag">Blender</span>
-          <span class="tag">Low-poly</span>
+          
+          <span class="tag">PC</span>
+          
+          <span class="tag">Action</span>
+          
         </div>
         <h3>Robo Project</h3>
-        <p>A low-poly game prototype featuring piece-swapping modular robots. Currently in active development — modeling phase targeting May 2025.</p>
-        <span class="project-link">In progress →</span>
+        <span class="project-date">2024 – Present</span>
+        <p>A low-poly game prototype featuring piece-swapping modular robots. Currently in active development.</p>
+        <span class="project-link">View project →</span>
       </div>
     </div>
-
+    
   </div>
 </section>
+
+<!-- PROJECT MODAL -->
+<div id="project-modal" class="project-modal" aria-hidden="true" role="dialog">
+  <div class="project-modal-backdrop"></div>
+  <div class="project-modal-panel">
+    <button class="project-modal-close" aria-label="Close">✕</button>
+    <div class="project-modal-thumb">
+      <img class="project-modal-img" src="" alt="" />
+    </div>
+    <div class="project-modal-body">
+      <div class="project-modal-meta">
+        <span class="project-modal-status"></span>
+        <span class="project-modal-date"></span>
+      </div>
+      <h2 class="project-modal-title"></h2>
+      <div class="project-modal-tags"></div>
+      <div class="project-modal-desc"></div>
+      <div class="project-modal-tools-section">
+        <span class="project-modal-tools-label">Tools</span>
+        <div class="project-modal-tools"></div>
+      </div>
+      <div class="project-modal-links"></div>
+    </div>
+  </div>
+</div>
 
 <!-- BLOG -->
 <section id="blog">
@@ -458,7 +589,9 @@
           <span class="contact-link-label">adrian.jaime@ajproductions.dev</span>
         </a>
         <a href="https://www.linkedin.com/in/adrian-jaime-pastor/" target="_blank" rel="noopener" class="contact-link-item">
-          <span class="contact-link-icon">🔗</span>
+          <span class="contact-link-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          </span>
           <span class="contact-link-label">LinkedIn — Connect with me</span>
         </a>
       </div>
@@ -498,7 +631,26 @@
 <footer>
   <span class="footer-logo">Adrián J.</span>
   <span class="footer-copy">© 2025 AJProductions. Based near Barcelona.</span>
-  <a href="https://www.linkedin.com/in/adrian-jaime-pastor/" target="_blank" class="btn btn-ghost" style="padding:0.45rem 1rem; font-size:0.7rem;">LinkedIn ↗</a>
+  <div class="footer-socials">
+    <a href="https://www.linkedin.com/in/adrian-jaime-pastor/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+    </a>
+    <a href="https://x.com/" target="_blank" rel="noopener" class="social-icon" aria-label="X">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+    </a>
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener" class="social-icon" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/" target="_blank" rel="noopener" class="social-icon" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+    </a>
+    <a href="https://bsky.app/" target="_blank" rel="noopener" class="social-icon" aria-label="Bluesky">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.689-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
+    </a>
+  </div>
 </footer>
 
 
@@ -555,21 +707,157 @@
     });
   });
 
-  // ─── PROJECT FILTER ───
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+  // ─── PROJECT FILTER (multi-select dropdown) ───
+  const projectCards    = document.querySelectorAll('.project-card');
+  const dropdownTrigger = document.getElementById('tool-dropdown-trigger');
+  const dropdownList    = document.getElementById('tool-dropdown-list');
+  const selectedTagsEl  = document.getElementById('tool-selected-tags');
+  const selectedTools   = new Set();
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      projectCards.forEach(card => {
-        const cats = card.dataset.category || '';
-        card.style.display = (filter === 'all' || cats.includes(filter)) ? '' : 'none';
+  function applyFilter() {
+    projectCards.forEach(card => {
+      if (selectedTools.size === 0) { card.style.display = ''; return; }
+      const cardTools = (card.dataset.tools || '').split(',');
+      card.style.display = [...selectedTools].some(t => cardTools.includes(t)) ? '' : 'none';
+    });
+  }
+
+  function renderTags() {
+    selectedTagsEl.innerHTML = '';
+    selectedTools.forEach(tool => {
+      const chip = document.createElement('span');
+      chip.className = 'tool-chip';
+      chip.innerHTML = `${tool}<button class="tool-chip-remove" aria-label="Remove ${tool}">✕</button>`;
+      chip.querySelector('.tool-chip-remove').addEventListener('click', () => {
+        selectedTools.delete(tool);
+        dropdownList.querySelector(`[data-tool="${tool}"]`)?.classList.remove('selected');
+        renderTags();
+        applyFilter();
       });
+      selectedTagsEl.appendChild(chip);
+    });
+  }
+
+  const dropdownSearch = document.getElementById('tool-dropdown-search');
+
+  dropdownSearch.addEventListener('input', () => {
+    const q = dropdownSearch.value.toLowerCase();
+    dropdownList.querySelectorAll('.tool-dropdown-option').forEach(opt => {
+      opt.style.display = opt.dataset.tool.toLowerCase().includes(q) ? '' : 'none';
     });
   });
+
+  dropdownSearch.addEventListener('click', e => e.stopPropagation());
+
+  dropdownTrigger.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = dropdownList.classList.toggle('open');
+    dropdownTrigger.setAttribute('aria-expanded', open);
+    if (open) { dropdownSearch.value = ''; dropdownSearch.dispatchEvent(new Event('input')); dropdownSearch.focus(); }
+  });
+
+  dropdownList.querySelectorAll('.tool-dropdown-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const tool = opt.dataset.tool;
+      if (selectedTools.has(tool)) {
+        selectedTools.delete(tool);
+        opt.classList.remove('selected');
+      } else {
+        selectedTools.add(tool);
+        opt.classList.add('selected');
+      }
+      renderTags();
+      applyFilter();
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.tool-dropdown-wrap')) {
+      dropdownList.classList.remove('open');
+      dropdownTrigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // ─── PROJECT VIDEO HOVER ───
+  projectCards.forEach(card => {
+    const video = card.querySelector('.project-thumb-video');
+    if (!video) return;
+    card.addEventListener('mouseenter', () => { video.play(); });
+    card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
+  });
+
+  // ─── PROJECT MODAL ───
+  const modal      = document.getElementById('project-modal');
+  const modalClose = modal.querySelector('.project-modal-close');
+  const modalBack  = modal.querySelector('.project-modal-backdrop');
+
+  function openModal(card) {
+    modal.querySelector('.project-modal-img').src        = card.querySelector('.project-thumb-img')?.src || '';
+    modal.querySelector('.project-modal-img').alt        = card.dataset.title;
+    modal.querySelector('.project-modal-title').textContent = card.dataset.title;
+    modal.querySelector('.project-modal-desc').textContent  = card.dataset.description;
+
+    const start = card.dataset.start || '';
+    const end   = card.dataset.end   || '';
+    const dateEl = modal.querySelector('.project-modal-date');
+    if (start) {
+      dateEl.textContent = start + (end ? ' – ' + end : ' – Present');
+      dateEl.style.display = '';
+    } else {
+      dateEl.style.display = 'none';
+    }
+
+    const status = card.dataset.status;
+    const statusEl = modal.querySelector('.project-modal-status');
+    statusEl.textContent  = card.querySelector('.project-status-badge').textContent.trim();
+    statusEl.className    = 'project-modal-status project-status-badge status-' + status;
+
+    const tagsEl = modal.querySelector('.project-modal-tags');
+    tagsEl.innerHTML = '';
+    (card.dataset.tagsList || '').split('|').filter(Boolean).forEach(t => {
+      const s = document.createElement('span');
+      s.className = 'tag'; s.textContent = t;
+      tagsEl.appendChild(s);
+    });
+
+    const toolsEl = modal.querySelector('.project-modal-tools');
+    toolsEl.innerHTML = '';
+    (card.dataset.toolsList || '').split('|').filter(Boolean).forEach(t => {
+      const s = document.createElement('span');
+      s.className = 'tag tool-tag'; s.textContent = t;
+      toolsEl.appendChild(s);
+    });
+
+    const linksEl = modal.querySelector('.project-modal-links');
+    linksEl.innerHTML = '';
+    try {
+      const links = JSON.parse(card.dataset.links || '[]');
+      links.forEach(l => {
+        const a = document.createElement('a');
+        a.href = l.url; a.target = '_blank'; a.rel = 'noopener';
+        a.className = 'project-modal-link'; a.textContent = l.label;
+        linksEl.appendChild(a);
+      });
+    } catch (_) {}
+
+    modal.setAttribute('aria-hidden', 'false');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('.project-modal-panel').scrollTop = 0;
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  projectCards.forEach(card => {
+    card.addEventListener('click', () => openModal(card));
+  });
+  modalClose.addEventListener('click', closeModal);
+  modalBack.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
   // ─── FADE-IN OBSERVER ───
   const observer = new IntersectionObserver(entries => {

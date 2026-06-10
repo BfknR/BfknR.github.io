@@ -8,6 +8,9 @@ collections:
   companies:
     output: false
     sort_by: order
+  projects:
+    output: false
+    sort_by: order
 
 markdown: kramdown
 kramdown:
