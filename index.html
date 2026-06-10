@@ -584,10 +584,11 @@
   });
 
   // ─── PROJECT VIDEO HOVER / SCROLL-INTO-VIEW ───
-  const isTouchDevice = () => window.matchMedia('(hover: none)').matches;
+  const isTouchDevice = () => navigator.maxTouchPoints > 0;
+
   const videoObserver = new IntersectionObserver((entries) => {
+    if (!isTouchDevice()) return;
     entries.forEach(entry => {
-      if (!isTouchDevice()) return;
       const card  = entry.target;
       const video = card.querySelector('.project-thumb-video');
       if (!video) return;
@@ -605,8 +606,8 @@
   projectCards.forEach(card => {
     const video = card.querySelector('.project-thumb-video');
     if (!video) return;
-    card.addEventListener('mouseenter', () => { if (!isTouchDevice()) video.play(); });
-    card.addEventListener('mouseleave', () => { if (!isTouchDevice()) { video.pause(); video.currentTime = 0; } });
+    card.addEventListener('mouseenter', () => { video.play(); });
+    card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
     videoObserver.observe(card);
   });
 
