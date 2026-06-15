@@ -4,7 +4,7 @@ title: "Game of the Week - Dragon Quest Smash/Grow"
 date: 2025-05-10
 excerpt: "When you adapt a genre, the first question isn't 'what can I add?'. It's 'why does this work?'. The auto-battler formula works because it removes decisions. Adding goes against it."
 linkedin_url: "https://www.linkedin.com/posts/adrian-jaime-pastor_this-week-ive-been-playing-%F0%9D%97%97%F0%9D%97%BF%F0%9D%97%AE%F0%9D%97%B4%F0%9D%97%BC%F0%9D%97%BB-share-7459176701244198912-gHon?utm_source=share&utm_medium=member_desktop&rcm=ACoAACBlF90BXV1mwJJiiX-wF2phnJuiXNNRpZc"
-cover_image: /assets/img/GOTW - Dragon Quest Smash Grow.jpeg
+cover_image: /assets/img/posts/GOTW - Dragon Quest Smash Grow.jpeg
 tags: [gotw, design]
 ---
 

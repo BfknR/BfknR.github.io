@@ -4,7 +4,7 @@ title: "How to make investors drop their phones"
 date: 2025-05-06
 excerpt: "In a world where nobody really cares about you or your projects. You must put on a show and become a performer. Here's how."
 linkedin_url: "https://www.linkedin.com/posts/adrian-jaime-pastor_i-needed-some-psychology-tricks-to-get-invested-activity-7457694525705265152-eDTH?utm_source=share&utm_medium=member_desktop&rcm=ACoAACBlF90BXV1mwJJiiX-wF2phnJuiXNNRpZc"
-cover_image: /assets/img/PL - GameBCN - DemoDay.jpg
+cover_image: /assets/img/posts/PL - GameBCN - DemoDay.jpg
 tags: [pitch, investors]
 ---
 

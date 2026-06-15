@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adrián J. — Game Developer & Producer</title>
+  <title>Adrián Jaime Pastor — Game Developer & Producer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -16,7 +16,7 @@
 <!-- NAV -->
 <div id="scroll-progress"></div>
 <nav>
-  <a href="/" class="nav-logo">Adrián J.</a>
+  <a href="/" class="nav-logo">Adrián Jaime Pastor</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
@@ -251,10 +251,11 @@
       data-title="{{ project.title }}"
       data-status="{{ project.status }}"
       data-summary="{{ project.summary }}"
-      data-description="{{ project.description | escape }}"
+      data-description=""
       data-tools-list="{{ project.tools | join: '|' }}"
       data-tags-list="{{ project.tags | join: '|' }}"
       data-links="{{ project.links | jsonify | escape }}"
+      data-media="{{ project.media | jsonify | escape }}"
       data-start="{{ project.start }}"
       data-end="{{ project.end }}"
       style="transition-delay:{{ forloop.index0 | times: 0.1 }}s">
@@ -291,33 +292,58 @@
         <p>{{ project.summary }}</p>
         <span class="project-link">View project →</span>
       </div>
+      <div class="project-desc-html" hidden>{{ project.description | markdownify }}</div>
     </div>
     {% endfor %}
   </div>
 </section>
 
+<!-- MEDIA LIGHTBOX -->
+<div id="media-lightbox" class="media-lightbox">
+  <div class="media-lightbox-backdrop"></div>
+  <button class="media-lightbox-close" aria-label="Close">✕</button>
+  <button class="media-lightbox-prev" aria-label="Previous">&#8249;</button>
+  <button class="media-lightbox-next" aria-label="Next">&#8250;</button>
+  <div class="media-lightbox-content"></div>
+</div>
+
 <!-- PROJECT MODAL -->
 <div id="project-modal" class="project-modal" aria-hidden="true" role="dialog">
   <div class="project-modal-backdrop"></div>
-  <div class="project-modal-panel">
+  <div class="project-modal-inner">
     <button class="project-modal-close" aria-label="Close">✕</button>
-    <div class="project-modal-thumb">
-      <img class="project-modal-img" src="" alt="" />
-    </div>
+    <div class="project-modal-panel">
+      <div class="project-modal-thumb">
+        <img class="project-modal-img" src="" alt="" />
+        <div class="project-modal-thumb-gradient"></div>
+        <span class="project-modal-status"></span>
+      </div>
     <div class="project-modal-body">
       <div class="project-modal-meta">
-        <span class="project-modal-status"></span>
         <span class="project-modal-date"></span>
       </div>
       <h2 class="project-modal-title"></h2>
       <div class="project-modal-tags"></div>
-      <div class="project-modal-desc"></div>
+      <div class="project-modal-media-section" hidden>
+        <div class="media-strip-wrapper">
+          <div class="project-modal-media"></div>
+          <button class="media-strip-next" aria-label="Next">&#8250;</button>
+        </div>
+      </div>
+      <div class="project-modal-about-section">
+        <span class="project-modal-section-label">About</span>
+        <div class="project-modal-desc"></div>
+      </div>
+      <div class="project-modal-links-section" hidden>
+        <span class="project-modal-section-label">Links</span>
+        <div class="project-modal-links"></div>
+      </div>
       <div class="project-modal-tools-section">
-        <span class="project-modal-tools-label">Tools</span>
+        <span class="project-modal-tools-label project-modal-section-label">Tools</span>
         <div class="project-modal-tools"></div>
       </div>
-      <div class="project-modal-links"></div>
     </div>
+  </div>
   </div>
 </div>
 
@@ -621,7 +647,7 @@
     modal.querySelector('.project-modal-img').src        = card.querySelector('.project-thumb-img')?.src || '';
     modal.querySelector('.project-modal-img').alt        = card.dataset.title;
     modal.querySelector('.project-modal-title').textContent = card.dataset.title;
-    modal.querySelector('.project-modal-desc').textContent  = card.dataset.description;
+    modal.querySelector('.project-modal-desc').innerHTML = card.querySelector('.project-desc-html')?.innerHTML || '';
 
     const start = card.dataset.start || '';
     const end   = card.dataset.end   || '';
@@ -654,6 +680,7 @@
       toolsEl.appendChild(s);
     });
 
+    const linksSection = modal.querySelector('.project-modal-links-section');
     const linksEl = modal.querySelector('.project-modal-links');
     linksEl.innerHTML = '';
     try {
@@ -664,13 +691,107 @@
         a.className = 'project-modal-link'; a.textContent = l.label;
         linksEl.appendChild(a);
       });
-    } catch (_) {}
+      linksSection.hidden = links.length === 0;
+    } catch (_) { linksSection.hidden = true; }
+
+    const mediaSection = modal.querySelector('.project-modal-media-section');
+    const mediaEl = modal.querySelector('.project-modal-media');
+    mediaEl.innerHTML = '';
+    let currentMediaItems = [];
+    try {
+      currentMediaItems = JSON.parse(card.dataset.media || '[]');
+      currentMediaItems.forEach((m, i) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'project-modal-media-item';
+        wrap.dataset.index = i;
+
+        const thumb = document.createElement('div');
+        thumb.className = 'media-thumb';
+
+        if (m.type === 'video') {
+          const vid = document.createElement('video');
+          vid.src = m.src; vid.muted = true; vid.preload = 'metadata';
+          vid.setAttribute('playsinline', '');
+          vid.addEventListener('loadedmetadata', () => { vid.currentTime = 0.1; });
+          thumb.appendChild(vid);
+          const play = document.createElement('div');
+          play.className = 'media-play-btn';
+          play.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+          thumb.appendChild(play);
+        } else {
+          const img = document.createElement('img');
+          img.src = m.src; img.alt = m.caption || ''; img.loading = 'lazy';
+          thumb.appendChild(img);
+        }
+
+        wrap.appendChild(thumb);
+
+        wrap.addEventListener('click', () => openLightbox(currentMediaItems, i));
+        mediaEl.appendChild(wrap);
+      });
+      mediaSection.hidden = currentMediaItems.length === 0;
+
+      const stripNext = mediaSection.querySelector('.media-strip-next');
+      stripNext.onclick = () => {
+        const item = mediaEl.querySelector('.project-modal-media-item');
+        if (item) mediaEl.scrollBy({ left: item.offsetWidth + 8, behavior: 'smooth' });
+      };
+    } catch (_) { mediaSection.hidden = true; }
 
     modal.setAttribute('aria-hidden', 'false');
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
     modal.querySelector('.project-modal-panel').scrollTop = 0;
   }
+
+  // ─── MEDIA LIGHTBOX ───
+  const lightbox     = document.getElementById('media-lightbox');
+  const lbContent    = lightbox.querySelector('.media-lightbox-content');
+  const lbClose      = lightbox.querySelector('.media-lightbox-close');
+  const lbPrev       = lightbox.querySelector('.media-lightbox-prev');
+  const lbNext       = lightbox.querySelector('.media-lightbox-next');
+  let lbItems = [], lbIndex = 0;
+
+  function openLightbox(items, index) {
+    lbItems = items; lbIndex = index;
+    renderLightbox();
+    requestAnimationFrame(() => lightbox.classList.add('open'));
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.addEventListener('transitionend', () => {
+      lbContent.innerHTML = '';
+    }, { once: true });
+  }
+
+  function renderLightbox() {
+    lbContent.innerHTML = '';
+    const m = lbItems[lbIndex];
+    if (m.type === 'video') {
+      const vid = document.createElement('video');
+      vid.src = m.src; vid.controls = true; vid.autoplay = true; vid.muted = false;
+      vid.setAttribute('playsinline', '');
+      lbContent.appendChild(vid);
+    } else {
+      const img = document.createElement('img');
+      img.src = m.src; img.alt = m.caption || '';
+      lbContent.appendChild(img);
+    }
+    lbPrev.style.visibility = lbIndex > 0 ? '' : 'hidden';
+    lbNext.style.visibility = lbIndex < lbItems.length - 1 ? '' : 'hidden';
+  }
+
+  lbClose.addEventListener('click', closeLightbox);
+  lightbox.querySelector('.media-lightbox-backdrop').addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', () => { if (lbIndex > 0) { lbIndex--; renderLightbox(); } });
+  lbNext.addEventListener('click', () => { if (lbIndex < lbItems.length - 1) { lbIndex++; renderLightbox(); } });
+  document.addEventListener('keydown', e => {
+    if (lightbox.hidden) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft' && lbIndex > 0) { lbIndex--; renderLightbox(); }
+    if (e.key === 'ArrowRight' && lbIndex < lbItems.length - 1) { lbIndex++; renderLightbox(); }
+  });
 
   function closeModal() {
     modal.classList.remove('open');

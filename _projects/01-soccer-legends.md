@@ -1,6 +1,6 @@
 ---
 title: "Soccer Legends"
-thumb: /assets/img/project-soccer-legends.png
+thumb: /assets/img/projects/project-soccer-legends.png
 video: /assets/vid/soccer-legends.mp4
 status: launched
 tags:
@@ -23,6 +23,17 @@ description: |
   The game reached the App Store and Google Play, achieving thousands of downloads in its first weeks.
 start: "2022"
 end: "2024"
-links: []
+media:
+  - type: image
+    src: /assets/img/projects/project-soccer-legends.png
+    caption: "Key art"
+  - type: video
+    src: /assets/vid/soccer-legends.mp4
+    caption: "Gameplay"
+links:
+  - label: App Store
+    url: https://apple.com
+  - label: Google Play
+    url: https://google.com
 order: 1
 ---

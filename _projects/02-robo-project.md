@@ -1,6 +1,6 @@
 ---
 title: "Robo Project"
-thumb: /assets/img/project-robo.svg
+thumb: /assets/img/projects/project-robo.jpeg
 video: ""
 status: in-progress
 tags:
