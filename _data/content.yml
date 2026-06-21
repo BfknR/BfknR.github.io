@@ -1,0 +1,43 @@
+nav:
+  logo: "Adrián Jaime Pastor"
+  cta: "Get in touch"
+
+hero:
+  label: "Gameplay programmer"
+  title: "Adrián J. P.<br><em>Game Builder</em><br>Full cycle."
+  subtitle: "Programmer · Producer · Designer"
+  roles:
+    - "Gameplay Systems"
+    - "Backend integration"
+    - "Systems programmer"
+    - "RPG Systems"
+    - "Live Ops"
+    - "Game Design"
+  cta_work: "See my work"
+  cta_cv: "Download CV"
+
+about:
+  label: "About"
+  heading: "Programmer first,<br>producer by necessity."
+  paragraphs:
+  - "I write code. I've also built a studio from scratch, led a <strong>team of 10</strong>, raised funding, and <strong>shipped a live mobile game</strong>."
+  - "That experience doesn't leave you when you sit down to write a feature. You think about scope, about what the designer actually needs, about what breaks in production. You write code that fits the game, not just the spec."
+  - "After Project Legends I spent <strong>two years in Saudi Arabia</strong> with GameBCN, mentoring early-stage studios on production, game design, and shipping. That included programming sessions — gameplay patterns and architecture — delivered as group talks and one-on-one with individual developers."
+  - "Based near Barcelona. <strong>Nine years</strong> across programming, production, and design. Currently looking for a <strong>Gameplay Programmer</strong> role."
+blog:
+  label: "Blog"
+  heading: "Thoughts &<br>dispatches"
+  subtitle: "Originally published on LinkedIn — readable here."
+
+contact:
+  label: "Contact"
+  heading: "Let's work<br>together."
+  description: "Open to full-time gameplay programmer roles and any opportunity on the programming side. Based near Barcelona, available remotely or on-site. Let's talk."
+  email: "adrian.jaime@ajproductions.dev"
+  linkedin_url: "https://www.linkedin.com/in/adrian-jaime-pastor/"
+  linkedin_label: "LinkedIn — Connect with me"
+  submit_label: "Send message →"
+
+footer:
+  logo: "Adrián Jaime Pastor"
+  copy: "© 2025 AJProductions. Based near Barcelona."

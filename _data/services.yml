@@ -1,0 +1,39 @@
+- icon: "🎮"
+  title: "Producer"
+  description: "End-to-end production management for game projects. I keep timelines, teams, and creative vision aligned."
+  delay: ""
+  items:
+    - "Project planning & roadmapping"
+    - "Cross-team communication & coordination"
+    - "Milestone tracking & risk management"
+    - "Pitch decks & stakeholder reporting"
+
+- icon: "✏️"
+  title: "Game Designer"
+  description: "Systems, mechanics, and player experience design. From core loops to full GDD documentation."
+  delay: "0.1s"
+  items:
+    - "Core loop & mechanic design"
+    - "Monetisation strategy (gacha, IAP)"
+    - "Game Design Documents (GDD)"
+    - "Playtesting & iteration"
+
+- icon: "💻"
+  title: "Programmer"
+  description: "Hands-on development support. Prototyping, tooling, and technical guidance for game teams."
+  delay: "0.2s"
+  items:
+    - "Prototype development"
+    - "Tool & pipeline scripting"
+    - "Technical documentation"
+    - "Code reviews & architecture advice"
+
+- icon: "🚀"
+  title: "Mentorship"
+  description: "Tailored mentorship for indie studios and developers navigating early-stage game production."
+  delay: "0.4s"
+  items:
+    - "1-on-1 or team sessions"
+    - "Early-stage studio guidance"
+    - "Career path coaching"
+    - "International game industry perspective"

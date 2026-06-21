@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adrián Jaime Pastor — Game Developer & Producer</title>
+  <title>{{ site.data.content.nav.logo }} — Gameplay Programmer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -16,16 +16,15 @@
 <!-- NAV -->
 <div id="scroll-progress"></div>
 <nav>
-  <a href="/" class="nav-logo">Adrián Jaime Pastor</a>
+  <a href="/" class="nav-logo">{{ site.data.content.nav.logo }}</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#blog">Blog</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <a href="#contact" class="btn btn-primary nav-cta" style="padding:0.55rem 1.2rem; font-size:0.72rem;">Get in touch</a>
+    <a href="#contact" class="btn btn-primary nav-cta" style="padding:0.55rem 1.2rem; font-size:0.72rem;">{{ site.data.content.nav.cta }}</a>
     <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
@@ -33,11 +32,10 @@
 </nav>
 <ul class="nav-mobile-panel" id="nav-mobile-panel">
   <li><a href="#about">About</a></li>
-  <li><a href="#services">Services</a></li>
   <li><a href="#projects">Projects</a></li>
   <li><a href="#blog">Blog</a></li>
   <li><a href="#contact">Contact</a></li>
-  <li><a href="#contact" class="btn btn-primary">Get in touch</a></li>
+  <li><a href="#contact" class="btn btn-primary">{{ site.data.content.nav.cta }}</a></li>
 </ul>
 
 <!-- HERO -->
@@ -45,30 +43,27 @@
   <div class="hero-bg-circle"></div>
 
   <div class="hero-content">
-    <div class="hero-label label fade-in">Game Developer & Producer</div>
-    <h1 class="hero-title fade-in" style="transition-delay:0.1s">Adrián J. P.<br><em>Building worlds.</em><br>Growing teams.</h1>
-    <p class="hero-subtitle fade-in" style="transition-delay:0.2s">Producer · Designer · Programmer</p>
+    <div class="hero-label label fade-in">{{ site.data.content.hero.label }}</div>
+    <h1 class="hero-title fade-in" style="transition-delay:0.1s">{{ site.data.content.hero.title }}</h1>
+    <p class="hero-subtitle fade-in" style="transition-delay:0.2s">{{ site.data.content.hero.subtitle }}</p>
 
     <div class="hero-roles fade-in" style="transition-delay:0.3s">
-      <span class="role-tag">Game Production</span>
-      <span class="role-tag">Game Design</span>
-      <span class="role-tag">Programming</span>
-      <span class="role-tag">Team Audits</span>
-      <span class="role-tag">Mentorship</span>
+      {% for role in site.data.content.hero.roles %}
+      <span class="role-tag">{{ role }}</span>
+      {% endfor %}
     </div>
 
     <div class="hero-ctas fade-in" style="transition-delay:0.4s">
-      <a href="#services" class="btn btn-primary">Explore services</a>
-      <a href="#projects" class="btn btn-ghost">See my work</a>
-      <a href="/assets/Adrián Jaime Pastor - Resume.pdf" download class="btn btn-ghost">
+      <a href="#projects" class="btn btn-primary">{{ site.data.content.hero.cta_work }}</a>
+      <a href="/assets/Adrián Jaime Pastor - Resume.pdf" download class="btn btn-ghost">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right:0.35rem"><path d="M6 1v7M3 5.5l3 3 3-3M1 10h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Download CV
+        {{ site.data.content.hero.cta_cv }}
       </a>
     </div>
   </div>
 
   <div class="hero-photo fade-in" style="transition-delay:0.5s">
-    <img src="/assets/img/hero-photo.jpg" alt="Adrián J." class="hero-photo-img" />
+    <img src="/assets/img/hero-photo.jpg" alt="Adrián Jaime Pastor" class="hero-photo-img" />
   </div>
 
   <div class="hero-scroll">
@@ -111,8 +106,8 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="section-header fade-in">
-    <span class="label">About</span>
-    <h2>A bridge builder<br>in game development</h2>
+    <span class="label">{{ site.data.content.about.label }}</span>
+    <h2>{{ site.data.content.about.heading }}</h2>
     <div class="section-line"></div>
   </div>
 
@@ -121,91 +116,19 @@
       <div class="about-headshot">
         <img src="/assets/img/headshot.jpg" alt="Adrián J." />
       </div>
-      <p>I'm a game developer and producer based near <strong>Barcelona</strong>, with a background that spans production, design, programming, and team communication. I work best at the intersection of disciplines — translating vision into execution.</p>
-      <p>I co-founded <strong>Project Legends</strong>, the studio behind <em>Soccer Legends</em>, a mobile soccer RPG with gacha mechanics, where I led fundraising and cross-functional team coordination from the ground up.</p>
-      <p>More recently I served as a <strong>startup mentor in Riyadh</strong> for the Saudi Game Champions program (GameBCN), coaching early-stage game studios through production pipelines, game design fundamentals, and team development — from first prototype to launch.</p>
-      <p>My core strength is <strong>bridging communication</strong> across developer, artist, and designer teams — making sure nothing falls through the cracks and that creative ambition stays grounded in reality.</p>
+      {% for paragraph in site.data.content.about.paragraphs %}
+      <p>{{ paragraph }}</p>
+      {% endfor %}
     </div>
 
     <div class="about-stats fade-in" style="transition-delay:0.15s">
+      {% for stat in site.data.stats %}
       <div class="stat-card">
-        <div class="stat-number">1.5+</div>
-        <div class="stat-label">Years mentoring startups internationally</div>
+        <div class="stat-number">{{ stat.number }}</div>
+        <div class="stat-label">{{ stat.label }}</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-number">3</div>
-        <div class="stat-label">Core disciplines: production, design, programming</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">∞</div>
-        <div class="stat-label">Passion for games — from Pokémon to indie gems</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">BCN</div>
-        <div class="stat-label">Based near Barcelona, working globally</div>
-      </div>
+      {% endfor %}
     </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-header fade-in">
-    <span class="label">Services</span>
-    <h2>How I can<br>help you</h2>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="services-grid">
-
-    <div class="service-card fade-in">
-      <span class="service-icon">🎮</span>
-      <h3>Producer</h3>
-      <p>End-to-end production management for game projects. I keep timelines, teams, and creative vision aligned.</p>
-      <ul class="service-list">
-        <li>Project planning & roadmapping</li>
-        <li>Cross-team communication & coordination</li>
-        <li>Milestone tracking & risk management</li>
-        <li>Pitch decks & stakeholder reporting</li>
-      </ul>
-    </div>
-
-    <div class="service-card fade-in" style="transition-delay:0.1s">
-      <span class="service-icon">✏️</span>
-      <h3>Game Designer</h3>
-      <p>Systems, mechanics, and player experience design. From core loops to full GDD documentation.</p>
-      <ul class="service-list">
-        <li>Core loop & mechanic design</li>
-        <li>Monetisation strategy (gacha, IAP)</li>
-        <li>Game Design Documents (GDD)</li>
-        <li>Playtesting & iteration</li>
-      </ul>
-    </div>
-
-    <div class="service-card fade-in" style="transition-delay:0.2s">
-      <span class="service-icon">💻</span>
-      <h3>Programmer</h3>
-      <p>Hands-on development support. Prototyping, tooling, and technical guidance for game teams.</p>
-      <ul class="service-list">
-        <li>Prototype development</li>
-        <li>Tool & pipeline scripting</li>
-        <li>Technical documentation</li>
-        <li>Code reviews & architecture advice</li>
-      </ul>
-    </div>
-
-    <div class="service-card fade-in" style="transition-delay:0.4s">
-      <span class="service-icon">🚀</span>
-      <h3>Mentorship</h3>
-      <p>Tailored mentorship for indie studios and developers navigating early-stage game production.</p>
-      <ul class="service-list">
-        <li>1-on-1 or team sessions</li>
-        <li>Early-stage studio guidance</li>
-        <li>Career path coaching</li>
-        <li>International game industry perspective</li>
-      </ul>
-    </div>
-
   </div>
 </section>
 
@@ -258,6 +181,9 @@
       data-media="{{ project.media | jsonify | escape }}"
       data-start="{{ project.start }}"
       data-end="{{ project.end }}"
+      data-company="{{ project.company }}"
+      data-role="{{ project.role }}"
+      data-tasks="{{ project.tasks | jsonify | escape }}"
       style="transition-delay:{{ forloop.index0 | times: 0.1 }}s">
       <div class="project-thumb">
         {% if project.thumb %}
@@ -282,12 +208,8 @@
         </span>
       </div>
       <div class="project-body">
-        <div class="project-tags">
-          {% for tag in project.tags %}
-          <span class="tag">{{ tag }}</span>
-          {% endfor %}
-        </div>
         <h3>{{ project.title }}</h3>
+        {% if project.company or project.role %}<span class="project-meta">{% if project.company %}{{ project.company }}{% endif %}{% if project.company and project.role %} · {% endif %}{% if project.role %}{{ project.role }}{% endif %}</span>{% endif %}
         {% if project.start %}<span class="project-date">{{ project.start }}{% if project.end and project.end != "" %} – {{ project.end }}{% else %} – Present{% endif %}</span>{% endif %}
         <p>{{ project.summary }}</p>
         <span class="project-link">View project →</span>
@@ -323,6 +245,7 @@
         <span class="project-modal-date"></span>
       </div>
       <h2 class="project-modal-title"></h2>
+      <div class="project-modal-company" hidden></div>
       <div class="project-modal-tags"></div>
       <div class="project-modal-media-section" hidden>
         <div class="media-strip-wrapper">
@@ -333,6 +256,10 @@
       <div class="project-modal-about-section">
         <span class="project-modal-section-label">About</span>
         <div class="project-modal-desc"></div>
+      </div>
+      <div class="project-modal-tasks-section" hidden>
+        <span class="project-modal-section-label">Main tasks</span>
+        <ul class="project-modal-tasks"></ul>
       </div>
       <div class="project-modal-links-section" hidden>
         <span class="project-modal-section-label">Links</span>
@@ -350,11 +277,11 @@
 <!-- BLOG -->
 <section id="blog">
   <div class="section-header fade-in">
-    <span class="label">Blog</span>
-    <h2>Thoughts &<br>dispatches</h2>
+    <span class="label">{{ site.data.content.blog.label }}</span>
+    <h2>{{ site.data.content.blog.heading }}</h2>
     <div class="section-line"></div>
   </div>
-  <p class="fade-in" style="color:var(--muted); font-size:0.9rem; margin-bottom:2rem; margin-top:-2rem;">Originally published on LinkedIn — readable here.</p>
+  <p class="fade-in" style="color:var(--muted); font-size:0.9rem; margin-bottom:2rem; margin-top:-2rem;">{{ site.data.content.blog.subtitle }}</p>
 
   {% assign all_tags = "" | split: "" %}
   {% for post in site.posts %}
@@ -411,20 +338,20 @@
 <section id="contact">
   <div class="contact-grid">
     <div class="contact-intro fade-in">
-      <span class="label" style="display:block; margin-bottom:1rem;">Contact</span>
-      <h2>Let's work<br>together.</h2>
-      <p>Whether you need a producer to steer your project, an audit of your team's process, or a mentorship partner — I'm open to conversations.</p>
+      <span class="label" style="display:block; margin-bottom:1rem;">{{ site.data.content.contact.label }}</span>
+      <h2>{{ site.data.content.contact.heading }}</h2>
+      <p>{{ site.data.content.contact.description }}</p>
 
       <div class="contact-links">
-        <a href="mailto:adrian.jaime@ajproductions.dev" class="contact-link-item">
+        <a href="mailto:{{ site.data.content.contact.email }}" class="contact-link-item">
           <span class="contact-link-icon">✉️</span>
-          <span class="contact-link-label">adrian.jaime@ajproductions.dev</span>
+          <span class="contact-link-label">{{ site.data.content.contact.email }}</span>
         </a>
-        <a href="https://www.linkedin.com/in/adrian-jaime-pastor/" target="_blank" rel="noopener" class="contact-link-item">
+        <a href="{{ site.data.content.contact.linkedin_url }}" target="_blank" rel="noopener" class="contact-link-item">
           <span class="contact-link-icon">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
           </span>
-          <span class="contact-link-label">LinkedIn — Connect with me</span>
+          <span class="contact-link-label">{{ site.data.content.contact.linkedin_label }}</span>
         </a>
       </div>
     </div>
@@ -439,13 +366,11 @@
         <input type="email" name="email" class="form-input" placeholder="your@email.com" required />
       </div>
       <div class="form-field">
-        <label class="form-label">What do you need?</label>
+        <label class="form-label">What's this about?</label>
         <select name="service" class="form-input" style="cursor:pointer">
-          <option value="">— Select a service —</option>
-          <option>Production</option>
-          <option>Game Design</option>
-          <option>Programming</option>
-          <option>Team Audit</option>
+          <option value="">— Select —</option>
+          <option>Job opportunity</option>
+          <option>Freelance / Contract</option>
           <option>Mentorship</option>
           <option>Something else</option>
         </select>
@@ -454,17 +379,17 @@
         <label class="form-label">Message</label>
         <textarea name="message" class="form-textarea" placeholder="Tell me about your project or what you're looking for…" required></textarea>
       </div>
-      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send message →</button>
+      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">{{ site.data.content.contact.submit_label }}</button>
     </form>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-logo">Adrián J.</span>
-  <span class="footer-copy">© 2025 AJProductions. Based near Barcelona.</span>
+  <span class="footer-logo">{{ site.data.content.footer.logo }}</span>
+  <span class="footer-copy">{{ site.data.content.footer.copy }}</span>
   <div class="footer-socials">
-    <a href="https://www.linkedin.com/in/adrian-jaime-pastor/" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+    <a href="{{ site.data.content.contact.linkedin_url }}" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
     </a>
     <a href="https://x.com/" target="_blank" rel="noopener" class="social-icon" aria-label="X">
@@ -648,6 +573,29 @@
     modal.querySelector('.project-modal-img').alt        = card.dataset.title;
     modal.querySelector('.project-modal-title').textContent = card.dataset.title;
     modal.querySelector('.project-modal-desc').innerHTML = card.querySelector('.project-desc-html')?.innerHTML || '';
+
+    const companyEl = modal.querySelector('.project-modal-company');
+    const company = card.dataset.company || '';
+    const role = card.dataset.role || '';
+    if (company || role) {
+      companyEl.textContent = [company, role].filter(Boolean).join(' · ');
+      companyEl.hidden = false;
+    } else {
+      companyEl.hidden = true;
+    }
+
+    const tasksSection = modal.querySelector('.project-modal-tasks-section');
+    const tasksEl = modal.querySelector('.project-modal-tasks');
+    tasksEl.innerHTML = '';
+    try {
+      const tasks = JSON.parse(card.dataset.tasks || '[]');
+      tasks.forEach(t => {
+        const li = document.createElement('li');
+        li.textContent = t;
+        tasksEl.appendChild(li);
+      });
+      tasksSection.hidden = tasks.length === 0;
+    } catch (_) { tasksSection.hidden = true; }
 
     const start = card.dataset.start || '';
     const end   = card.dataset.end   || '';

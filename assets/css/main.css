@@ -369,7 +369,7 @@ section {
   color: var(--gold-dim);
 }
 
-#projects { background: var(--navy-mid); }
+#projects { background: var(--navy); }
 
 
 .filter-btn {
@@ -405,6 +405,8 @@ section {
   background: rgba(255,255,255,0.015);
   transition: border-color 0.3s, transform 0.3s;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card:hover { border-color: var(--gold-dim); transform: translateY(-4px); }
@@ -423,7 +425,8 @@ section {
   background: linear-gradient(135deg, rgba(201,168,76,0.08), transparent);
 }
 
-.project-body { padding: 1.6rem; }
+.project-body { padding: 1.6rem; display: flex; flex-direction: column; flex: 1; }
+.project-body p { flex: 1; }
 
 .project-tags {
   display: flex; gap: 0.5rem; flex-wrap: wrap;
@@ -440,6 +443,14 @@ section {
   color: var(--gold-dim);
 }
 
+.project-meta {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
 .project-date {
   display: block;
   font-size: 0.68rem;
@@ -737,6 +748,13 @@ section {
   color: var(--white);
   margin-bottom: 1rem;
 }
+.project-modal-company {
+  font-size: 0.78rem;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
 .project-modal-tags {
   display: flex; gap: 0.5rem; flex-wrap: wrap;
   margin-bottom: 1.4rem;
@@ -758,10 +776,30 @@ section {
 }
 .project-modal-desc p { margin-bottom: 1em; }
 .project-modal-desc p:last-child { margin-bottom: 0; }
+.project-modal-tasks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.project-modal-tasks li {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.6;
+  padding-left: 1rem;
+  position: relative;
+}
+.project-modal-tasks li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
 .project-modal-media-section {
   margin-top: 1.2rem;
 }
 .project-modal-about-section,
+.project-modal-tasks-section,
 .project-modal-links-section,
 .project-modal-tools-section {
   margin-top: 1.4rem;
@@ -918,7 +956,7 @@ section {
 }
 .project-modal-link:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
 
-#blog { background: var(--navy); }
+#blog { background: var(--navy-mid); }
 
 .blog-grid {
   display: grid;

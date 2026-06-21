@@ -11,14 +11,21 @@ tools:
   - Blender
   - Unity
   - C#
-summary: "A low-poly game prototype featuring piece-swapping modular robots. Currently in active development."
+company: "Personal project"
+role: "Solo developer"
+tasks:
+  - "Designed and implemented a modular component system in Unity/C# supporting runtime part-swapping and stat combination"
+  - "Built core gameplay loop and combat interactions from scratch as sole developer"
+  - "Created all low-poly 3D assets in Blender, prioritizing readable silhouettes for gameplay clarity"
+  - "Iterating on balance, feel, and core loop through rapid prototyping"
+summary: "Personal prototype built solo in Unity/C#. Core mechanic: a modular robot system where players swap and combine parts at runtime."
 description: |
-  Robo Project is a personal game prototype exploring modular robot design as a core mechanic. Players collect, swap, and combine robot parts to build unique machines suited to different challenges.
+  Robo Project is a personal prototype exploring modular robot design as a core gameplay mechanic. Players collect, swap, and combine robot parts at runtime to build machines suited to different challenges.
 
-  The art direction uses a deliberate low-poly aesthetic with clean silhouettes to make each part instantly readable. Modeling is done in Blender; gameplay logic in Unity with C#.
+  Built solo in Unity and C# — I'm responsible for all programming, game design, and 3D art. The modular system handles part-swapping, stat combination, and visual composition at runtime. Low-poly assets are modeled in Blender with clean silhouettes to keep each piece instantly readable mid-gameplay.
 
-  Currently in the modeling and core-loop prototyping phase.
-start: "2024"
+  Currently in active development, iterating on combat interactions and core loop feel.
+start: "2026"
 end: ""
 links: []
 order: 2
